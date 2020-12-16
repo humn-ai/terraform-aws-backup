@@ -87,5 +87,5 @@ resource "aws_backup_selection" "default" {
 }
 
 locals {
-  dynamodb_arns = formatlist("arn:aws:dynamodb:${var.aws_region}:${var.aws_account_id}:table/${var.environment}", var.dynamodb_resources)
+  dynamodb_arns = formatlist("%s", "arn:aws:dynamodb:${var.aws_region}:${var.aws_account_id}:table/${var.environment}", var.dynamodb_resources)
 }
