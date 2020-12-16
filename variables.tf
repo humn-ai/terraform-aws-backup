@@ -63,6 +63,36 @@ variable "delete_after" {
 variable "backup_resources" {
   type        = list(string)
   description = "An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan"
+  default = []
+}
+
+variable "dynamodb_resources" {
+  type        = list(string)
+  description = "An array of strings that contains the name of the DynamoDB table without the environment prefix to assign to a backup plan"
+  default = [
+    "ActionsAppConfig",
+    "CarPicture",
+    "Driver",
+    "EventSeverityConfig",
+    "Fleet",
+    "FleetOperator",
+    "FollowUpAction",
+    "FuelCost",
+    "Lease",
+    "LeaseMileage",
+    "Policy",
+    "PolicyType",
+    "RfrAndComments",
+    "Score",
+    "ScoreFactors",
+    "Trip",
+    "TripEvent",
+    "TripScore",
+    "TripSummary",
+    "Vehicle",
+    "VehicleMOT",
+    "Vin2IMEIMapping"
+  ]
 }
 
 variable "destination_vault_arn" {
