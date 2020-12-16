@@ -83,9 +83,9 @@ resource "aws_backup_selection" "default" {
   name         = module.this.id
   iam_role_arn = join("", aws_iam_role.default.*.arn)
   plan_id      = join("", aws_backup_plan.default.*.id)
-  resources    = length(var.backup_resources) > 0 ? local.dynamodb_resources : var.backup_resources
+  resources    = length(var.backup_resources) > 0 ? local.dynamodb_arns : var.backup_resources
 }
 
 locals {
-  dynamodb_resources = formatlist("arn:aws:dynamodb:${var.aws_region}:${var.aws_account_id}:table/${var.environment}", var.backup_resources)
+  dynamodb_arns = formatlist("arn:aws:dynamodb:${var.aws_region}:${var.aws_account_id}:table/${var.environment}", var.dynamodb_resources)
 }
