@@ -83,7 +83,7 @@ resource "aws_backup_selection" "default" {
   name         = module.this.id
   iam_role_arn = join("", aws_iam_role.default.*.arn)
   plan_id      = join("", aws_backup_plan.default.*.id)
-  resources    = length(var.backup_resources) > 0 ? local.dynamodb_arns : var.backup_resources
+  resources    = length(var.backup_resources) > 0 ? var.backup_resources : local.dynamodb_arns
 }
 
 locals {
